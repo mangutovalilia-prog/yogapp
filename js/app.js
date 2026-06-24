@@ -353,7 +353,9 @@
     pasasana: 2, ashtachandrasana: 3, kapotasana: 2,
     ekapadabakasana: 3, vrschikasana: 3,
     utkatakonasana: 3, parivrttaardhachandrasana: 2, ekapadarajakapotmermaid: 2,
-    urdhvaprasarita: 2, forearmplank: 2, svargadvijasana: 3, camatkarasana: 2 };
+    urdhvaprasarita: 2, forearmplank: 2, svargadvijasana: 3, camatkarasana: 2,
+    urdhvamukhasvanasana: 2, samakonasana: 2, ardhanavasana: 3, parivrttautkatasana: 3,
+    parivrttaparsvakonasana: 3, vyaghrasana: 1, bhekasana: 2, parivrttajanusirsasana: 1 };
   const OPEN_BREATH = { relaxing: 'full-breath', balancing: 'nadi-shodhana', energizing: 'kapalabhati' };
 
   let genCfg = { duration: 20, intensity: 'green', state: 'balancing' };
