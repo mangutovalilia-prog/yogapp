@@ -355,7 +355,9 @@
     utkatakonasana: 3, parivrttaardhachandrasana: 2, ekapadarajakapotmermaid: 2,
     urdhvaprasarita: 2, forearmplank: 2, svargadvijasana: 3, camatkarasana: 2,
     urdhvamukhasvanasana: 2, samakonasana: 2, ardhanavasana: 3, parivrttautkatasana: 3,
-    parivrttaparsvakonasana: 3, vyaghrasana: 1, bhekasana: 2, parivrttajanusirsasana: 1 };
+    parivrttaparsvakonasana: 3, vyaghrasana: 1, bhekasana: 2, parivrttajanusirsasana: 1,
+    parvatasana: 0, utthitatadasana: 1, ardhapinchamayurasana: 2, ekapadasetubandhasana: 2,
+    yogamudrasana: 1, suptakonasana: 1, ardhachandrachapasana: 2, laghuvajrasana: 3, padangusthasana: 2 };
   const OPEN_BREATH = { relaxing: 'full-breath', balancing: 'nadi-shodhana', energizing: 'kapalabhati' };
 
   let genCfg = { duration: 20, intensity: 'green', state: 'balancing' };
