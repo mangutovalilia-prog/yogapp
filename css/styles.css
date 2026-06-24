@@ -1,0 +1,310 @@
+:root {
+  /* Палитра */
+  --bg:        #f6f1e9;
+  --bg-soft:   #fbf8f2;
+  --card:      #ffffff;
+  --ink:       #3a3530;
+  --ink-soft:  #7c756c;
+  --line:      #e7ded2;
+
+  /* Уровни сложности / состояния */
+  --green:     #6fae6a;
+  --green-bg:  #e8f3e6;
+  --yellow:    #e0a83a;
+  --yellow-bg: #fbf0d8;
+  --purple:    #8a6fc0;
+  --purple-bg: #ece6f6;
+
+  --accent:    #c98a5e;
+  --accent-bg: #f6e8dc;
+
+  --radius:    20px;
+  --radius-sm: 12px;
+  --shadow:    0 10px 30px rgba(80, 60, 40, .08);
+  --shadow-sm: 0 4px 14px rgba(80, 60, 40, .06);
+  --maxw:      1080px;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'Nunito', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: radial-gradient(1200px 600px at 80% -10%, var(--accent-bg), transparent 60%),
+              radial-gradient(900px 500px at 0% 0%, var(--green-bg), transparent 55%),
+              var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.55;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; letter-spacing: .2px; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .3em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 .4em; }
+h3 { font-size: 1.3rem; margin: 0 0 .3em; }
+p  { margin: 0 0 .8em; }
+.muted { color: var(--ink-soft); }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Шапка ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 18px;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: rgba(251, 248, 242, .82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+.logo-mark { font-size: 1.6rem; color: var(--accent); }
+.logo-text { font-family: var(--serif); font-size: 1.5rem; }
+.main-nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.main-nav a {
+  padding: 8px 16px; border-radius: 999px; font-weight: 700; color: var(--ink-soft);
+  transition: all .2s;
+}
+.main-nav a:hover { color: var(--ink); background: var(--bg); }
+.main-nav a.active { color: #fff; background: var(--accent); }
+.char-pick {
+  border: 1px solid var(--line); background: var(--card); cursor: pointer;
+  width: 46px; height: 46px; border-radius: 50%; font-size: 1.5rem; line-height: 1;
+  display: grid; place-items: center; box-shadow: var(--shadow-sm); transition: transform .2s;
+}
+.char-pick:hover { transform: scale(1.06); }
+
+/* ---------- Каркас экранов ---------- */
+.app { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: clamp(20px, 4vw, 44px); flex: 1; }
+.site-footer { text-align: center; color: var(--ink-soft); padding: 24px; font-size: .85rem; }
+
+.screen-head { margin-bottom: 22px; }
+.screen-head .kicker { text-transform: uppercase; letter-spacing: 2px; font-size: .72rem; font-weight: 800; color: var(--accent); }
+
+/* ---------- Кнопки ---------- */
+.btn {
+  font-family: var(--sans); font-weight: 700; font-size: .95rem; cursor: pointer;
+  padding: 12px 22px; border-radius: 999px; border: none; background: var(--accent); color: #fff;
+  transition: transform .15s, box-shadow .2s, background .2s; box-shadow: var(--shadow-sm);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn.ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.btn.block { width: 100%; }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* ---------- Чипы уровней ---------- */
+.level-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+.level-tab {
+  display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 18px;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--card);
+  font-weight: 700; color: var(--ink-soft); transition: all .2s;
+}
+.level-tab .dot { width: 12px; height: 12px; border-radius: 50%; }
+.level-tab.active { color: var(--ink); border-color: transparent; box-shadow: var(--shadow-sm); }
+.dot.green  { background: var(--green); }
+.dot.yellow { background: var(--yellow); }
+.dot.purple { background: var(--purple); }
+.level-tab.green.active  { background: var(--green-bg); }
+.level-tab.yellow.active { background: var(--yellow-bg); }
+.level-tab.purple.active { background: var(--purple-bg); }
+
+/* ---------- Сетка карточек ---------- */
+.card-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.card {
+  background: var(--card); border-radius: var(--radius); padding: 18px; cursor: pointer;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+  transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card .card-fig { height: 150px; display: grid; place-items: center; margin-bottom: 10px; }
+.card .card-fig svg { height: 100%; width: auto; }
+.card h3 { margin-bottom: 2px; }
+.card .sanskrit { font-style: italic; color: var(--ink-soft); font-size: .9rem; }
+.card .level-stripe { position: absolute; top: 0; left: 0; width: 6px; height: 100%; }
+.level-stripe.green { background: var(--green); }
+.level-stripe.yellow { background: var(--yellow); }
+.level-stripe.purple { background: var(--purple); }
+
+.badge { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 800;
+  padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: .5px; }
+.badge.green  { background: var(--green-bg);  color: var(--green); }
+.badge.yellow { background: var(--yellow-bg); color: #b07f1e; }
+.badge.purple { background: var(--purple-bg); color: var(--purple); }
+
+/* ---------- Детальный экран асаны / практики ---------- */
+.detail { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 820px) { .detail { grid-template-columns: 1fr; } }
+
+.stage {
+  background: linear-gradient(180deg, var(--bg-soft), var(--card));
+  border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line); position: sticky; top: 86px;
+}
+.stage .figure-wrap { display: grid; place-items: center; min-height: 320px; }
+.stage .figure-wrap svg { max-height: 340px; width: auto; }
+.stage .char-row { display: flex; gap: 8px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.char-chip {
+  border: 1px solid var(--line); background: var(--card); border-radius: 999px;
+  padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: .85rem; display: flex; align-items: center; gap: 6px;
+}
+.char-chip.active { border-color: var(--accent); background: var(--accent-bg); }
+
+.stage-tabs { display: flex; gap: 6px; justify-content: center; margin-bottom: 14px; }
+.stage-tab {
+  border: 1px solid var(--line); background: var(--card); border-radius: 999px;
+  padding: 6px 16px; cursor: pointer; font-weight: 700; font-size: .85rem; color: var(--muted);
+  transition: all .15s ease;
+}
+.stage-tab.active { border-color: var(--accent); background: var(--accent-bg); color: var(--ink); }
+.stage .asana-photo {
+  display: block; width: 100%; max-width: 360px; margin: 0 auto;
+  border-radius: var(--radius); box-shadow: var(--shadow-sm); aspect-ratio: 1 / 1; object-fit: cover;
+}
+.stage .figure-wrap[hidden], .stage .char-row[hidden], .stage .asana-photo[hidden] { display: none; }
+
+.detail .info h1 { margin-bottom: 0; }
+.detail .info .sanskrit { font-style: italic; color: var(--ink-soft); margin-bottom: 14px; }
+
+.section-block { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 16px 18px; margin-bottom: 14px; box-shadow: var(--shadow-sm); }
+.section-block h4 { margin: 0 0 8px; font-family: var(--sans); font-weight: 800; font-size: .8rem;
+  text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+
+.muscle-chips, .variations { display: flex; flex-wrap: wrap; gap: 8px; }
+.muscle-chip { background: var(--accent-bg); color: var(--accent); border-radius: 999px;
+  padding: 5px 12px; font-weight: 700; font-size: .82rem; cursor: pointer; transition: all .2s; }
+.muscle-chip:hover, .muscle-chip.hot { background: var(--accent); color: #fff; }
+.variations li { margin-bottom: 6px; }
+
+.source { display: grid; gap: 10px; }
+.source .src { padding-left: 14px; border-left: 3px solid var(--line); }
+.source .src.vedas { border-color: var(--green); }
+.source .src.patanjali { border-color: var(--purple); }
+.source .src b { display: block; font-family: var(--serif); font-size: 1.05rem; }
+
+.cues { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.cues li { display: flex; gap: 10px; align-items: flex-start; }
+.cues li::before { content: "•"; color: var(--accent); font-weight: 900; }
+
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--ink-soft); margin-bottom: 16px; cursor: pointer; }
+.back-link:hover { color: var(--ink); }
+
+/* ---------- Схема мышц ---------- */
+.muscle-map { display: grid; place-items: center; }
+.muscle-map svg { max-height: 300px; }
+.m-region { fill: #e9e0d4; transition: fill .3s, filter .3s; }
+.m-region.on { fill: var(--accent); filter: drop-shadow(0 0 6px rgba(201,138,94,.6)); }
+.m-base { fill: #d9cdbc; }
+
+/* ---------- Дыхание: анимация ---------- */
+.breath-stage { display: grid; place-items: center; gap: 18px; }
+.breath-orb-wrap { position: relative; width: 260px; height: 260px; display: grid; place-items: center; }
+.breath-orb {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--accent));
+  box-shadow: 0 0 50px rgba(201,138,94,.4); transition: transform .2s linear, background .8s;
+}
+.breath-orb.relaxing  { background: radial-gradient(circle at 35% 30%, #fff, var(--green)); box-shadow: 0 0 50px rgba(111,174,106,.4); }
+.breath-orb.balancing { background: radial-gradient(circle at 35% 30%, #fff, var(--yellow)); box-shadow: 0 0 50px rgba(224,168,58,.4); }
+.breath-orb.energizing{ background: radial-gradient(circle at 35% 30%, #fff, var(--purple)); box-shadow: 0 0 50px rgba(138,111,192,.4); }
+.breath-phase { font-family: var(--serif); font-size: 2rem; }
+.breath-count { font-size: 3rem; font-weight: 800; color: var(--accent); }
+.breath-meta { text-align: center; }
+.ring { position: absolute; inset: 0; border-radius: 50%; border: 2px dashed var(--line); }
+
+/* ---------- Генератор ---------- */
+.gen-form { display: grid; gap: 20px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); max-width: 720px; }
+.field label { font-weight: 800; display: block; margin-bottom: 10px; }
+.choice-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.choice {
+  flex: 1; min-width: 110px; text-align: center; cursor: pointer; padding: 14px 12px;
+  border-radius: var(--radius-sm); border: 2px solid var(--line); background: var(--bg-soft);
+  font-weight: 700; transition: all .2s;
+}
+.choice .ch-emoji { font-size: 1.6rem; display: block; margin-bottom: 4px; }
+.choice .ch-sub { font-size: .78rem; color: var(--ink-soft); font-weight: 600; }
+.choice.active { border-color: var(--accent); background: var(--accent-bg); }
+.choice.active.green  { border-color: var(--green);  background: var(--green-bg); }
+.choice.active.yellow { border-color: var(--yellow); background: var(--yellow-bg); }
+.choice.active.purple { border-color: var(--purple); background: var(--purple-bg); }
+
+/* План тренировки */
+.plan-list { display: grid; gap: 10px; margin: 18px 0; }
+.plan-item { display: flex; align-items: center; gap: 14px; background: var(--card);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px 16px; box-shadow: var(--shadow-sm); }
+.plan-item .pi-fig { width: 54px; height: 54px; flex: none; display: grid; place-items: center; }
+.plan-item .pi-fig svg { height: 50px; }
+.plan-item .pi-num { width: 28px; height: 28px; flex: none; border-radius: 50%; background: var(--accent-bg);
+  color: var(--accent); font-weight: 800; display: grid; place-items: center; font-size: .85rem; }
+.plan-item .pi-main { flex: 1; }
+.plan-item .pi-main b { display: block; }
+.plan-item .pi-dur { color: var(--ink-soft); font-weight: 700; font-size: .9rem; }
+.plan-summary { display: flex; gap: 18px; flex-wrap: wrap; margin: 6px 0 4px; color: var(--ink-soft); font-weight: 700; }
+
+/* ---------- Плеер тренировки ---------- */
+.player { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 820px) { .player { grid-template-columns: 1fr; } }
+.player-progress { height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 18px; }
+.player-progress > div { height: 100%; background: var(--accent); width: 0; transition: width .4s; }
+.player-timer { font-size: 3.5rem; font-weight: 800; font-family: var(--serif); }
+.player-cue { background: var(--accent-bg); border-radius: var(--radius-sm); padding: 12px 16px;
+  font-weight: 700; color: var(--accent); min-height: 46px; display: flex; align-items: center; gap: 10px; }
+.player-controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+/* ---------- Поделиться ---------- */
+.share-box { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow-sm); margin-top: 20px; }
+.share-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.share-row input { flex: 1; min-width: 220px; padding: 12px 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); font-family: var(--sans); font-size: .9rem; background: var(--bg-soft); }
+.countdown { font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--accent); }
+
+/* ---------- Советы / факты ---------- */
+.tips-grid { columns: 3 260px; column-gap: 18px; }
+.tip-card { break-inside: avoid; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 20px; margin-bottom: 18px; box-shadow: var(--shadow-sm); }
+.tip-card .tip-type { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 8px; }
+.tip-card.quote { font-family: var(--serif); font-size: 1.3rem; line-height: 1.4; }
+.tip-card.quote .tip-author { font-family: var(--sans); font-size: .85rem; color: var(--ink-soft); margin-top: 8px; font-style: normal; }
+.tip-card .tip-type.quote { color: var(--purple); }
+.tip-card .tip-type.fact  { color: var(--green); }
+.tip-card .tip-type.tip   { color: var(--accent); }
+
+/* ---------- Модалка персонажа ---------- */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(58,53,48,.45); backdrop-filter: blur(4px);
+  display: grid; place-items: center; z-index: 50; padding: 20px; }
+.modal-backdrop[hidden] { display: none; }
+.modal { background: var(--card); border-radius: var(--radius); padding: 28px; max-width: 480px; width: 100%;
+  box-shadow: var(--shadow); text-align: center; }
+.char-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 18px 0; }
+.char-card { border: 2px solid var(--line); border-radius: var(--radius-sm); padding: 14px; cursor: pointer; transition: all .2s; }
+.char-card:hover { border-color: var(--accent); }
+.char-card.active { border-color: var(--accent); background: var(--accent-bg); }
+.char-card .cc-emoji { font-size: 2.2rem; }
+.char-card .cc-name { font-weight: 800; margin-top: 4px; }
+
+/* Лёгкое «дыхание» фигуры после входа в позу */
+.figure-wrap.breathing svg, .pi-fig svg { transform-origin: 50% 90%; }
+.figure-wrap.breathing svg { animation: figBreathe 4.5s ease-in-out infinite; }
+@keyframes figBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03) translateY(-2px); } }
+
+/* Кнопка озвучки в шапке */
+.voice-pick {
+  border: 1px solid var(--line); background: var(--card); cursor: pointer;
+  width: 46px; height: 46px; border-radius: 50%; font-size: 1.25rem; line-height: 1;
+  display: grid; place-items: center; box-shadow: var(--shadow-sm); transition: transform .2s, background .2s;
+}
+.voice-pick:hover { transform: scale(1.06); }
+.voice-pick.on { background: var(--accent-bg); border-color: var(--accent); }
+
+/* Утилиты появления */
+.fade-in { animation: fadeIn .4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.empty { text-align: center; color: var(--ink-soft); padding: 60px 20px; }

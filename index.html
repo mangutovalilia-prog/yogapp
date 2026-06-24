@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Прана · йога с тобой</title>
+  <meta name="description" content="Асаны, дыхательные практики и персональные тренировки с анимированным наставником." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="site-header">
+    <a class="logo" href="#/asanas" data-link>
+      <span class="logo-mark" aria-hidden="true">ॐ</span>
+      <span class="logo-text">Прана</span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#/asanas"   data-link data-route="asanas">Асаны</a>
+      <a href="#/breath"   data-link data-route="breath">Дыхание</a>
+      <a href="#/generator" data-link data-route="generator">Тренировка</a>
+      <a href="#/tips"     data-link data-route="tips">Советы</a>
+    </nav>
+    <button class="voice-pick" id="voice-pick" title="Голос наставника">
+      <span id="voice-pick-icon">🔈</span>
+    </button>
+    <button class="char-pick" id="char-pick" title="Выбрать наставника">
+      <span id="char-pick-emoji">🧘‍♀️</span>
+    </button>
+  </header>
+
+  <!-- Сюда роутер рендерит экраны -->
+  <main id="app" class="app"></main>
+
+  <!-- Модалка выбора персонажа -->
+  <div class="modal-backdrop" id="char-modal" hidden>
+    <div class="modal">
+      <h3>Кто проведёт практику с тобой?</h3>
+      <p class="muted">Наставник показывает позы и напоминает о дыхании и осознанности.</p>
+      <div class="char-grid" id="char-grid"></div>
+      <button class="btn ghost" id="char-close">Готово</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>Прана · прототип · сделано с любовью к практике</span>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/characters.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
